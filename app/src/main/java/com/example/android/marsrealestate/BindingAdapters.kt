@@ -17,3 +17,22 @@
 
 package com.example.android.marsrealestate
 
+import android.widget.ImageView
+import androidx.core.net.toUri
+import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+
+//binding adapter to convert image url to a uri with https scheme
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    //let block handles null uris
+    imgUrl?.let {
+        //Glide needs image to be converted from url to uri
+        val imgUri = it.toUri().buildUpon().scheme("https").build()
+        //load the image with glide
+        Glide.with(imgView.context)
+                .load(imgUri)
+                .into(imgView)
+    }
+}
+

@@ -20,6 +20,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- Have to add viewmodel data binding variable-->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.android.marsrealestate.overview.OverviewViewModel" />
+    </data>
+
+    <!-- can now use image binding adapter with app:imageUrl-->
     <ImageView
         android:id="@+id/mars_image"
         android:layout_width="match_parent"
@@ -27,5 +38,6 @@
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
         android:padding="2dp"
+        app:imageUrl="@{viewModel.property.imgSrcUrl}"
         tools:src="@tools:sample/backgrounds/scenic"/>
 </layout>
