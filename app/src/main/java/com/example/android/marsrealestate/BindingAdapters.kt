@@ -21,6 +21,7 @@ import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 //binding adapter to convert image url to a uri with https scheme
 @BindingAdapter("imageUrl")
@@ -32,6 +33,10 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         //load the image with glide
         Glide.with(imgView.context)
                 .load(imgUri)
+                //added placeholder and error images
+                .apply(RequestOptions()
+                        .placeholder(R.drawable.loading_animation)
+                        .error(R.drawable.ic_broken_image))
                 .into(imgView)
     }
 }
