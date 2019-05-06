@@ -49,5 +49,16 @@
             tools:itemCount="16"
             tools:listitem="@layout/grid_view_item" />
 
+        <!-- add image view for error status-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:marsApiStatus="@{viewModel.status}" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
