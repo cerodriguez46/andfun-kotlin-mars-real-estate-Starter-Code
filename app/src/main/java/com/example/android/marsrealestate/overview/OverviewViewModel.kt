@@ -41,11 +41,11 @@ class OverviewViewModel : ViewModel() {
         get() = _status
 
     //create a live data for our one MarsProperty
-    private val _property = MutableLiveData<MarsProperty>()
+    //Since using recyclerview, replace live data with a List of Mars Property
+    private val _properties = MutableLiveData<List<MarsProperty>>()
 
-    val property: LiveData<MarsProperty>
-        get() = _property
-
+    val properties: LiveData<List<MarsProperty>>
+        get() = _properties
     //Have to create coroutine job and coroutine scope
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -71,7 +71,8 @@ class OverviewViewModel : ViewModel() {
                 var listResult = getPropertiesDeferred.await()
                 //update to _set property to the first MarsProperty from listResult
                 if (listResult.size > 0) {
-                    _property.value = listResult[0]
+                    //remove position since we're getting the whole list
+                    _properties.value = listResult
                 }
                 //_status.value = "Success: ${listResult.size} Mars properties received"
             } catch (t: Throwable) {

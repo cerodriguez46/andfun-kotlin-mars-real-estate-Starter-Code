@@ -22,15 +22,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <!-- Have to add viewmodel data binding variable-->
+    <!-- Update data binding to just take a mars property-->
     <data>
 
         <variable
-            name="viewModel"
-            type="com.example.android.marsrealestate.overview.OverviewViewModel" />
+            name="property"
+            type="com.example.android.marsrealestate.network.MarsProperty" />
     </data>
 
-    <!-- can now use image binding adapter with app:imageUrl-->
+    <!-- imageUrl should now just refer to property.imageSrcUrl-->
     <ImageView
         android:id="@+id/mars_image"
         android:layout_width="match_parent"
@@ -38,6 +38,6 @@
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
         android:padding="2dp"
-        app:imageUrl="@{viewModel.property.imgSrcUrl}"
+        app:imageUrl="@{property.imgSrcUrl}"
         tools:src="@tools:sample/backgrounds/scenic"/>
 </layout>
