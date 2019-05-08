@@ -27,5 +27,8 @@ data class MarsProperty(
         @Json(name = "img_src")
         val imgSrcUrl: String,
         val type: String,
-        val price: Double) : Parcelable
+        val price: Double) : Parcelable {
+        val isRental
+                get() = type == "rent"
+}
 
